@@ -1,0 +1,205 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #87CEFA, #FFC0CB); /* Azul e Rosa */
+    color: #333;
+    text-align: center;
+    padding: 20px;
+}
+
+header {
+    background-color: rgba(255, 192, 203, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2.2em;
+    color: #fff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+section {
+    margin: 20px 0;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+section p {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.image-grid {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.image-grid img {
+    max-width: 30%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .image-grid img {
+        max-width: 100%;
+    }
+
+    section h2 {
+        font-size: 1.5em;
+    }
+
+    section p {
+        font-size: 1em;
+    }
+}
+
+#email-section {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(135, 206, 250, 0.8); /* Azul claro */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#email-section h2 {
+    font-size: 1.8em;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+#email-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#email-form input {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 400px;
+}
+
+#email-form button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #ff69b4; /* Rosa */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#email-form button:hover {
+    background-color: #ff1493; /* Rosa mais escuro */
+}
+
+
+.carousel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-image {
+    min-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Ajuste responsivo */
+@media (max-width: 768px) {
+    .carousel {
+        max-width: 90%;
+    }
+
+    .carousel-image {
+        min-width: 100%;
+    }
+}
+
+
+#proposal-section {
+    text-align: center;
+    margin: 30px 0;
+}
+
+#proposal-section h2 {
+    font-size: 24px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+#proposal-section .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+#proposal-section button {
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#yes-button {
+    background-color: #4CAF50; /* Verde para "Sim" */
+}
+
+#no-button {
+    background-color: #F44336; /* Vermelho para "Não" */
+}
+
+#proposal-section button:hover {
+    opacity: 0.8;
+}
