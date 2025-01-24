@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Presente Especial</title>
     <link rel="stylesheet" href="./index.css">
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        emailjs.init("nl6_StcFGhwPuXEbd");
+    </script>
 </head>
 <body>
     <header>
@@ -15,8 +18,8 @@
     <div class="container">
         <section>
             <h2>Você é muito especial para mim!</h2>
-            <p>Quero que saiba o quanto eu te amo e o quanto você significa para mim. Mesmo que seja só um doido que você conheceu na asam </p>
-            <p> e supeite que eu irei cometer algum crime, saiba que gosto muito de você e lhe admiro muito. 🌸</p>
+            <p>Quero que saiba o quanto eu te amo e o quanto você significa para mim. Mesmo que seja só um doido que você conheceu na asam</p>
+            <p>E suspeite que eu irei cometer algum crime, saiba que gosto muito de você e lhe admiro muito. 🌸</p>
             <img src="./images/gabybeijo.jpg" alt="Imagem fofa" class="image">
         </section>
 
@@ -26,7 +29,7 @@
                 <div class="carousel-track">
                     <img src="./images/gabyeu.jpg" alt="Imagem 1" class="carousel-image">
                     <img src="./images/gabyeuu.jpg" alt="Imagem 2" class="carousel-image">
-                    <img src="./images/gabylinda.jpg " alt="Imagem 3" class="carousel-image">
+                    <img src="./images/gabylinda.jpg" alt="Imagem 3" class="carousel-image">
                 </div>
             </div>
         </section>
@@ -36,9 +39,9 @@
             <ul>
                 <li>Seu sorriso ilumina o meu dia. </li>
                 <li>Você me faz querer ser melhor a cada dia. </li>
-                <li>Seu jeito único de ser é perfeita para mim. </li>
-                <li>aguentar minhas loucuras </li>
-                <li>querer ser boa acada dia, e não ficar se derrubando por pouco</li>
+                <li>Seu jeito único de ser é perfeito para mim. </li>
+                <li>Aguentar minhas loucuras. </li>
+                <li>Querer ser boa a cada dia, e não se derrubar por pouco.</li>
             </ul>
         </section>
 
@@ -47,7 +50,6 @@
             <form id="email-form">
                 <label for="email">Seu E-mail:</label>
                 <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
-                <button type="submit">Enviar</button>
             </form>
         </section>
 
@@ -58,84 +60,60 @@
                 <button id="no-button">Não</button>
             </div>
         </section>
+
+      
+        <section id="surprise-section">
+            <h2>Tem mais uma surpresa para você!</h2>
+            <h3>espero que goste, muaa❤️</h3>
+            <a href="./flores/index.html" id="surprise-link">Clique aqui</a>
+        </section>
     </div>
 
     <script>
-        // preciso conencetar ao meu email 
-        emailjs.init('SEU_ID_PUBLICO');
+        const yesButton = document.getElementById('yes-button');
+        const noButton = document.getElementById('no-button');
+        const emailInput = document.getElementById('email');
 
-        
-        document.getElementById('yes-button').addEventListener('click', function() {
-            const userEmail = document.getElementById('email').value;
+        function sendEmail() {
+            const email = emailInput.value;
 
-            if (!userEmail) {
-                alert('Por favor, preencha seu e-mail antes de responder.');
+            if (!email) {
+                alert("Por favor, insira um e-mail válido.");
                 return;
             }
 
-            const templateParams = {
-                to_user: userEmail,
-                to_self: 'SEU_EMAIL_AQUI',
-                message_user: 'Eu estou muito feliz que você aceitou! Você é o amor da minha vida. 💖',
-                message_self: 'Ela aceitou! 🎉'
-            };
+            // Primeiro envio de e-mail
+            emailjs.send("service_202bbcw", "template_0yelr9o", {
+                to_email: email,
+            })
+            .then(() => {
+                alert("E-mail enviado com sucesso para você! ❤️");
+            })
+            .catch((error) => {
+                console.error("Erro ao enviar e-mail para o destinatário:", error);
+                alert("Houve um erro ao enviar o e-mail. 😢");
+            });
 
-            const serviceID = 'SEU_ID_DE_SERVICO';
-            const templateID = 'SEU_ID_DE_TEMPLATE';
-
-            emailjs.send(serviceID, templateID, templateParams)
-                .then(() => {
-                    alert('Você disse sim! O e-mail foi enviado. 💌');
-                })
-                .catch((error) => {
-                    console.error('Erro ao enviar o e-mail:', error);
-                    alert('Houve um erro ao enviar o e-mail. Tente novamente mais tarde.');
-                });
-        });
-
-        
-        document.getElementById('no-button').addEventListener('click', function() {
-            alert('Tudo bem, irei pular da ponte... 💔');
-        });
-
-        
-        document.getElementById('email-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const userEmail = document.getElementById('email').value;
-
-            const templateParams = {
-                to_user: userEmail,
-                to_self: 'SEU_EMAIL_AQUI',
-                message_user: 'Espero que este presente tenha alegrado o seu dia!',
-                message_self: 'O site foi acessado e o e-mail foi enviado com sucesso!'
-            };
-
-            const serviceID = 'SEU_ID_DE_SERVICO';
-            const templateID = 'SEU_ID_DE_TEMPLATE';
-
-            emailjs.send(serviceID, templateID, templateParams)
-                .then(() => {
-                    alert('E-mail enviado com sucesso para você e para mim! 💌');
-                })
-                .catch((error) => {
-                    console.error('Erro ao enviar e-mail:', error);
-                    alert('Houve um erro ao enviar o e-mail. Tente novamente mais tarde.');
-                });
-        });
-
-        
-        const track = document.querySelector('.carousel-track');
-        let index = 0;
-
-        function moveCarousel() {
-            index++;
-            const images = document.querySelectorAll('.carousel-image');
-            if (index >= images.length) index = 0;
-            track.style.transform = `translateX(-${index * 100}%)`;
+            // Segundo envio de e-mail
+            emailjs.send("service_202bbcw", "template_8cy5kjd", {
+                to_email: "jvortelan@gmail.com", 
+                user_email: email, 
+            })
+            .then(() => {
+                console.log("Segundo e-mail enviado com sucesso! ❤️");
+            })
+            .catch((error) => {
+                console.error("Erro ao enviar o segundo e-mail:", error);
+            });
         }
 
-        setInterval(moveCarousel, 3000); 
+        yesButton.addEventListener('click', () => {
+            sendEmail();
+        });
+
+        noButton.addEventListener('click', () => {
+            alert("💔 Que pena! Mas eu ainda gosto muito de você!");
+        });
     </script>
 </body>
 </html>
