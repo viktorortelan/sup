@@ -26,11 +26,15 @@
         <section>
             <h2>Nossas Lembranças</h2>
             <div class="carousel">
-                <div class="carousel-track">
-                    <img src="./images/gabyeu.jpg" alt="Imagem 1" class="carousel-image">
-                    <img src="./images/gabyeuu.jpg" alt="Imagem 2" class="carousel-image">
-                    <img src="./images/gabylinda.jpg" alt="Imagem 3" class="carousel-image">
+                <button class="carousel-button left" id="prev">&lt;</button>
+                <div class="carousel-track-container">
+                    <div class="carousel-track">
+                        <img src="./images/gabyeu.jpg" alt="Imagem 1" class="carousel-image">
+                        <img src="./images/gabyeuu.jpg" alt="Imagem 2" class="carousel-image">
+                        <img src="./images/gabylinda.jpg" alt="Imagem 3" class="carousel-image">
+                    </div>
                 </div>
+                <button class="carousel-button right" id="next">&gt;</button>
             </div>
         </section>
 
@@ -114,6 +118,31 @@
         noButton.addEventListener('click', () => {
             alert("💔 Que pena! Mas eu ainda gosto muito de você!");
         });
+
+
+
+        const track = document.querySelector('.carousel-track');
+const images = Array.from(track.children);
+const nextButton = document.getElementById('next');
+const prevButton = document.getElementById('prev');
+
+let currentIndex = 0;
+
+function updateCarousel() {
+    const slideWidth = images[0].getBoundingClientRect().width;
+    track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+}
+
+nextButton.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % images.length; // Avança para o próximo
+    updateCarousel();
+});
+
+prevButton.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length; // Volta para o anterior
+    updateCarousel();
+});
+
     </script>
 </body>
 </html>
